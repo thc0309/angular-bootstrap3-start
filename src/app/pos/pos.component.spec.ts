@@ -15,17 +15,17 @@ import { MockBackend } from '@angular/http/testing';
 
 // Load the implementations that should be tested
 import { AppState } from '../app.service';
-import { HomeComponent } from './home.component';
+import { PosComponent } from './Pos.component';
 import { Title } from './title';
 
-describe(`Home`, () => {
-  let comp: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe(`Pos`, () => {
+  let comp: PosComponent;
+  let fixture: ComponentFixture<PosComponent>;
 
   // async beforeEach
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      declarations: [PosComponent],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         BaseRequestOptions,
@@ -46,7 +46,7 @@ describe(`Home`, () => {
 
   // synchronous beforeEach
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(PosComponent);
     comp = fixture.componentInstance;
 
     fixture.detectChanges(); // trigger initial data binding
@@ -56,9 +56,6 @@ describe(`Home`, () => {
     expect(comp.localState).toEqual({ value: '' });
   });
 
-  it('should have a title', () => {
-    expect(!!comp.title).toEqual(true);
-  });
 
   it('should log ngOnInit', () => {
     spyOn(console, 'log');

@@ -33,9 +33,12 @@ const METADATA = {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
+
     isProd = options.env === 'production';
     return {
-
+        performance: {
+            hints: isProd ? "warning" : false
+        },
         /*
          * Cache generated modules and chunks to improve performance for multiple incremental builds.
          * This is enabled by default in watch mode.
@@ -161,12 +164,12 @@ module.exports = function(options) {
                             loader: 'postcss-loader',
                             options: {
                                 sourceMap: true,
-                                plugins: () => [autoprefixer({ browsers: ['iOS >= 7', 'Android >= 4.1'] }), rpx2rem()],
+                                plugins: () => [autoprefixer({ browsers: ['iOS >= 7', 'Android >= 4.1'] })],
                             },
                         },
 
                         {
-                            loader: 'sass-loader!css-loader?sourceMap!style-loader?sourceMap&sourceComments'
+                            loader: 'sass-loader?sourceMap'
                                 // options: {
                                 //     sourceMap: true,
                                 // },
